@@ -36,8 +36,14 @@ format = "ruff check . --fix && ruff format ."
 [tool.ruff]
 line-length = 110
 extend-exclude = ["migrations"]
+
+[tool.ruff.lint]
 preview = true
-lint.select = ["I", "F", "E", "W", "PL", "PT"]
+select = ["I", "F", "E", "W", "PL", "PT", "FAST"]
+
+[tool.ruff.format]
+preview = true
+quote-style = "single"
 
 [tool.pytest.ini_options]
 pythonpath = ['.']
