@@ -1,5 +1,5 @@
 from recall_api.clients.data_dragon import DataDragonClient
-from recall_api.schemas.campeoes_schemas import CampeaoResumo
+from recall_api.schemas.campeoes_schemas import CampeaoResumo, CampeaoDetalhe
 
 
 class CampeoesService:
@@ -15,3 +15,11 @@ class CampeoesService:
         campeoes = dados["data"].values()
 
         return [CampeaoResumo.model_validate(campeao) for campeao in campeoes]
+
+    async def listar_campeao_detalhado(self, campeao_id: str) -> CampeaoDetalhe:
+
+        dados = await self._client_data_dragon.get_campeao_detalhe(self._versao, self._idioma, campeao_id)
+
+        campeao_detalhado = dados["data"][campeao_id]
+
+        return CampeaoDetalhe.model_validate(campeao_detalhado)

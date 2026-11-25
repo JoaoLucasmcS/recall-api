@@ -14,6 +14,10 @@ class CampeaoResumo(BaseModel):
 
 class CampeaoDetalhe(CampeaoResumo):
     info: dict
+    lore: str
     blurb: str
-    tags: list
+    allytips: list[str]
+    enemytips: list[str]
+    tags: list[str]
     partype: str
+    stats: dict

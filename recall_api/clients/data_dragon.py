@@ -29,3 +29,11 @@ class DataDragonClient:
         campeoes = await self.http_client.get(url_campeoes)
 
         return campeoes.json()
+
+    async def get_campeao_detalhe(self, versao: str, idioma: str, champion_id: str):
+
+        url_campeao = f"{self.base_url}/cdn/{versao}/data/{idioma}/champion/{champion_id}.json"
+
+        campeao_detalhado = await self.http_client.get(url_campeao)
+
+        return campeao_detalhado.json()
