@@ -1,23 +1,46 @@
+from http import HTTPStatus
 from typing import Annotated
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 
 from recall_api.core.dependencies import get_campeoes_service
-from recall_api.schemas.campeoes_schemas import CampeaoResumo, CampeaoDetalhe
+from recall_api.core.exceptions import (
+    CampeaoNaoEncontradoError,
+    DataDragonIndisponivelError,
+)
+from recall_api.schemas.campeoes_schemas import CampeaoDetalhe, CampeaoResumo
 from recall_api.services.campeoes_service import CampeoesService
 
-router = APIRouter(prefix="/campeoes", tags=["campeoes"])
+router = APIRouter(prefix='/campeoes', tags=['campeoes'])
+
+Service = Annotated[CampeoesService, Depends(get_campeoes_service)]
 
 
-@router.get("/", response_model=list[CampeaoResumo])
-async def listar_campeoes(
-    service: Annotated[CampeoesService, Depends(get_campeoes_service)],
-):
-    return await service.listar_campeoes_resumo()
+@router.get('/', status_code=HTTPStatus.OK, response_model=list[CampeaoResumo])
+async def listar_campeoes(service: Service):
+    try:
+        return await service.listar_campeoes_resumo()
 
-@router.get("/{campeao_id}", response_model=CampeaoDetalhe)
-async def buscar_campeao_detalhado(
-        service: Annotated[CampeoesService, Depends(get_campeoes_service)],
-        campeao_id: str
-):
-    return await service.listar_campeao_detalhado(campeao_id=campeao_id)
+    except DataDragonIndisponivelError:
+        raise HTTPException(
+            status_code=HTTPStatus.SERVICE_UNAVAILABLE,
+            detail='Data Dragon indisponível no momento',
+        )
+
+
+@router.get('/{campeao_id}', status_code=HTTPStatus.OK, response_model=CampeaoDetalhe)
+async def buscar_campeao_detalhado_por_id(campeao_id: str, service: Service):
+    try:
+        return await service.buscar_campeao_detalhado(campeao_id=campeao_id)
+
+    except CampeaoNaoEncontradoError:
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND,
+            detail='Campeão não encontrado',
+        )
+
+    except DataDragonIndisponivelError:
+        raise HTTPException(
+            status_code=HTTPStatus.SERVICE_UNAVAILABLE,
+            detail='Data Dragon indisponível no momento',
+        )
