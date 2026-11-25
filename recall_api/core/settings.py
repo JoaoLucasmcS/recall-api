@@ -18,9 +18,13 @@ def _resolve_env_file():
 class Settings(BaseSettings):
     environment: Environment = "dev"
 
-    url_dDragon_campeoes: str
+    url_base: str
 
     frontend_url: str
+
+    versao: str
+
+    idioma: str
 
     model_config = SettingsConfigDict(
         env_file=_resolve_env_file(),

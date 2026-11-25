@@ -5,7 +5,7 @@ import httpx
 from fastapi import Depends
 
 from recall_api.clients.data_dragon import DataDragonClient
-from recall_api.core.settings import get_settings
+from recall_api.core.settings import Settings, get_settings
 from recall_api.services.campeoes_service import CampeoesService
 
 
@@ -14,12 +14,13 @@ async def get_data_dragon_client() -> AsyncIterator[DataDragonClient]:
 
     async with httpx.AsyncClient(timeout=10.0) as http_client:
         yield DataDragonClient(
-            base_url=settings.url_dDragon_campeoes,
+            base_url=settings.url_base,
             http_client=http_client,
         )
 
 
 def get_campeoes_service(
     client: Annotated[DataDragonClient, Depends(get_data_dragon_client)],
+    settings: Annotated[Settings, Depends(get_settings)],
 ) -> CampeoesService:
-    return CampeoesService(client_data_dragon=client)
+    return CampeoesService(client_data_dragon=client, versao=settings.versao, idioma=settings.idioma)
