@@ -13,7 +13,7 @@ class CampeaoResumo(BaseModel):
 
 
 class CampeaoDetalhe(CampeaoResumo):
-    info: str
+    info: dict
     blurb: str
-    tags: str
+    tags: list
     partype: str
