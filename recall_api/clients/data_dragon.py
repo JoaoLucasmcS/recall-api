@@ -55,3 +55,8 @@ class DataDragonClient:
             raise CampeaoNaoEncontradoError(f'Campeão {campeao_id} não encontrado')
 
         return campeao_detalhado.json()
+
+    def montar_url_imagem_campeao_loading(self, campeao_id: str) -> str:
+        url_img = f'{self.base_url}/cdn/img/champion/loading/{campeao_id}_0.jpg'
+
+        return url_img
