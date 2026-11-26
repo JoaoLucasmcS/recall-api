@@ -24,8 +24,14 @@ async def get_versao_atual(
 
 
 def get_campeoes_service(
+    request: Request,
     client: Annotated[DataDragonClient, Depends(get_data_dragon_client)],
     settings: Annotated[Settings, Depends(get_settings)],
     versao: Annotated[str, Depends(get_versao_atual)],
 ) -> CampeoesService:
-    return CampeoesService(client_data_dragon=client, versao=versao, idioma=settings.idioma)
+    return CampeoesService(
+        client_data_dragon=client,
+        cache=request.app.state.cache_campeoes,
+        versao=versao,
+        idioma=settings.idioma,
+    )

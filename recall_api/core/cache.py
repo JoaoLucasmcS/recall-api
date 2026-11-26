@@ -1,4 +1,5 @@
 import time
+from collections.abc import Awaitable, Callable
 
 from recall_api.clients.data_dragon import DataDragonClient
 
@@ -18,3 +19,20 @@ class CacheVersao:
             self._versao = versoes[0]
             self._buscado_em = time.monotonic()
         return self._versao
+
+
+class CacheCampeoes:
+
+    def __init__(self):
+        self._versao: str | None = None
+        self._dados: dict[str, dict] = {}
+
+    async def obter(self, versao: str, chave: str, buscar: Callable[[], Awaitable[dict]]) -> dict:
+        if versao != self._versao:
+            self._dados.clear()
+            self._versao = versao
+
+        if chave not in self._dados:
+            self._dados[chave] = await buscar()
+
+        return self._dados[chave]
