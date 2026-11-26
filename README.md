@@ -66,3 +66,7 @@ Erros: `404` para campeão inexistente; `503` quando o Data Dragon não responde
 ## Testes
 
 Os testes (`tests/`) usam um Data Dragon falso (`httpx.MockTransport`, em `conftest.py`) que responde como a CDN real e registra cada URL pedida. Assim dá para testar os endpoints, os erros 404/503 e o comportamento dos caches (quantas vezes cada arquivo foi baixado) sem depender da rede.
+
+---
+
+Recall não é endossado pela Riot Games e não reflete as opiniões da Riot Games nem de ninguém oficialmente envolvido na produção ou gestão de League of Legends. League of Legends e Riot Games são marcas comerciais ou marcas registradas da Riot Games, Inc. League of Legends © Riot Games, Inc.

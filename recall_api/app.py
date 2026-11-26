@@ -32,8 +32,6 @@ app.include_router(campeoes_router)
 app.include_router(patch_router)
 
 
-# O Data Dragon pode falhar dentro de uma dependência (ex.: ao buscar a versão atual),
-# antes de a rota rodar; por isso este erro é tratado aqui, para a API inteira.
 @app.exception_handler(DataDragonIndisponivelError)
 async def data_dragon_indisponivel(request: Request, erro: DataDragonIndisponivelError):
     return JSONResponse(
