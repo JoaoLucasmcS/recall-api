@@ -22,7 +22,6 @@ class CacheVersao:
 
 
 class CacheCampeoes:
-
     def __init__(self):
         self._versao: str | None = None
         self._dados: dict[str, dict] = {}
