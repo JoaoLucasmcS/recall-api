@@ -22,14 +22,11 @@ class Settings(BaseSettings):
 
     frontend_url: str
 
-    versao: str
-
     idioma: str
 
     model_config = SettingsConfigDict(
         env_file=_resolve_env_file(),
         env_file_encoding='utf-8',
-        extra='ignore',
     )
 
     @property
