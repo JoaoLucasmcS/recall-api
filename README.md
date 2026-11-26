@@ -1,6 +1,8 @@
 # Recall API
 
-API BFF da biblioteca de campeões do League of Legends. Consome o Data Dragon (CDN da Riot), trata os dados e entrega no formato que o front ([recall-web](https://github.com/JoaoLucasmcS/recall-web)) precisa.
+API BFF da biblioteca de campeões do League of Legends. **[Acesse o Recall](https://recall-web-lake.vercel.app)** · API em produção: [recall-api-nmw2.onrender.com/docs](https://recall-api-nmw2.onrender.com/docs).
+
+Consome o Data Dragon (CDN da Riot), trata os dados e entrega no formato que o front ([recall-web](https://github.com/JoaoLucasmcS/recall-web)) precisa.
 
 ## Como rodar
 
@@ -42,6 +44,7 @@ Erros: `404` para campeão inexistente; `503` quando o Data Dragon não responde
 - Trade-off: Quando a aplicação restartar, o que acontece nos deploys grátis (free tier) os dados guardados na memória do backend são perdidos, dessa forma no cold start (primeira requisição pós reset) tende a demorar mais tempo, já que nessa primeira requisição vão ser baixado os dados novamente e guardados em cache (dicts em memória). Por não usar o Redis se minha aplicação tiver duas ou mais instâncias, cada instância vai ter seu próprio cache em memória.
 - Reavaliar quando: Talvez na v2 quando precisarmos guardar algum dado que não pode sumir pós reset, ou até quando os dados forem de tamanho elevado a ponto de atrasar muito pós reset. Caso minha API escale para múltiplas instâncias é válido considerar o uso de Redis
 - Implementação: os caches (`core/cache.py`) e um único `httpx.AsyncClient` são criados uma vez no `lifespan` da aplicação e guardados no `app.state`, então vivem enquanto a API estiver de pé e são compartilhados por todas as requisições. O client compartilhado também reaproveita as conexões com o Data Dragon (keep-alive), evitando um handshake TLS a cada requisição.
+- Hospedagem: em produção a API roda no plano gratuito do Render, que coloca o serviço para dormir após 15 minutos sem uso e perde o cache em memória. A primeira requisição depois disso pode levar até um minuto (cold start), e o front mostra um aviso de "servidor acordando" quando o carregamento demora.
 - Limitação conhecida: logo após a API subir, duas requisições simultâneas podem encontrar o cache vazio e baixar o mesmo arquivo (cache stampede). Para o volume do Recall é irrelevante; se virar problema, resolve com um `asyncio.Lock` por chave.
 
 ### 4. Dois caches com invalidação diferente
