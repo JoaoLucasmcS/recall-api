@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" font-family="Inter, sans-serif" xmlns:c2pa="http://c2pa.org/manifest">
+  <defs>
+    <radialGradient id="brilho" cx="50%" cy="0%" r="70%">
+      <stop offset="0" stop-color="#7c3aed" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#7c3aed" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="logo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8b5cf6"/>
+      <stop offset="1" stop-color="#d946ef"/>
+    </linearGradient>
+    <linearGradient id="titulo" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#d8b4fe"/>
+    </linearGradient>
+    <marker id="seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#a78bfa"/>
+    </marker>
+    <marker id="seta-cinza" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#71717a"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#09090b"/>
+  <rect width="1600" height="900" fill="url(#brilho)"/>
+
+  <!-- título -->
+  <g transform="translate(60 48)">
+    <g transform="scale(0.8125)">
+      <rect width="64" height="64" rx="16" fill="url(#logo)"/>
+      <path d="M32 14 A18 18 0 1 0 46.7 21.7" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M43.0 16.4 L52.1 19.2 L42.6 25.8 Z" fill="#fff" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M32 22.5 L34.4 29.6 L41.5 32 L34.4 34.4 L32 41.5 L29.6 34.4 L22.5 32 L29.6 29.6 Z" fill="#fff"/>
+    </g>
+    <text x="72" y="25" font-size="30" font-weight="700" fill="url(#titulo)">Recall</text>
+    <text x="72" y="48" font-size="16" fill="#a1a1aa">Arquitetura da V1 · biblioteca de campeões do League of Legends</text>
+  </g>
+
+  <!-- selo V2 -->
+  <g transform="translate(1100 56)">
+    <rect width="440" height="44" rx="22" fill="#7c3aed" fill-opacity="0.12" stroke="#a78bfa" stroke-opacity="0.6" stroke-dasharray="6 5"/>
+    <circle cx="24" cy="22" r="5" fill="#d946ef"/>
+    <text x="40" y="28" font-size="15" fill="#e9d5ff">Em breve: assistente com IA · tool calling · MCP · RAG</text>
+  </g>
+
+  <!-- Navegador -->
+  <g transform="translate(60 360)">
+    <rect width="230" height="150" rx="18" fill="#18181b" stroke="#3f3f46"/>
+    <rect x="18" y="18" width="194" height="12" rx="6" fill="#27272a"/>
+    <circle cx="30" cy="24" r="3" fill="#f43f5e"/><circle cx="42" cy="24" r="3" fill="#f59e0b"/><circle cx="54" cy="24" r="3" fill="#10b981"/>
+    <text x="115" y="78" text-anchor="middle" font-size="22" font-weight="700" fill="#fafafa">Navegador</text>
+    <text x="115" y="104" text-anchor="middle" font-size="14" fill="#a1a1aa">desktop e celular</text>
+    <text x="115" y="126" text-anchor="middle" font-size="14" fill="#a1a1aa">tema claro e escuro</text>
+  </g>
+
+  <!-- Vercel / recall-web -->
+  <g transform="translate(380 150)">
+    <rect width="330" height="180" rx="18" fill="#18181b" stroke="#a78bfa" stroke-opacity="0.7"/>
+    <text x="24" y="38" font-size="13" font-weight="600" fill="#a78bfa" letter-spacing="2">VERCEL</text>
+    <text x="24" y="70" font-size="24" font-weight="700" fill="#fafafa">recall-web</text>
+    <text x="24" y="102" font-size="15" fill="#d4d4d8">React 19 · TypeScript · Vite</text>
+    <text x="24" y="126" font-size="15" fill="#d4d4d8">Tailwind CSS · shadcn/ui</text>
+    <text x="24" y="150" font-size="15" fill="#d4d4d8">React Router · hooks de dados</text>
+  </g>
+
+  <!-- Render / recall-api -->
+  <g transform="translate(790 220)">
+    <rect width="500" height="480" rx="22" fill="#18181b" stroke="#a78bfa" stroke-opacity="0.7"/>
+    <text x="28" y="40" font-size="13" font-weight="600" fill="#a78bfa" letter-spacing="2">RENDER</text>
+    <text x="28" y="74" font-size="24" font-weight="700" fill="#fafafa">recall-api</text>
+    <text x="28" y="100" font-size="15" fill="#a1a1aa">FastAPI · Python · BFF</text>
+
+    <!-- camadas -->
+    <g font-size="16" font-weight="600" fill="#fafafa" text-anchor="middle">
+      <rect x="28" y="128" width="200" height="56" rx="12" fill="#27272a" stroke="#52525b"/>
+      <text x="128" y="152">Routers</text>
+      <text x="128" y="172" font-size="12" font-weight="400" fill="#a1a1aa">404 · 503 (handler global)</text>
+
+      <rect x="28" y="222" width="200" height="56" rx="12" fill="#27272a" stroke="#52525b"/>
+      <text x="128" y="246">Service</text>
+      <text x="128" y="266" font-size="12" font-weight="400" fill="#a1a1aa">monta os dados para a tela</text>
+
+      <rect x="28" y="316" width="200" height="56" rx="12" fill="#27272a" stroke="#52525b"/>
+      <text x="128" y="340">DataDragonClient</text>
+      <text x="128" y="360" font-size="12" font-weight="400" fill="#a1a1aa">URLs + exceções próprias</text>
+    </g>
+    <line x1="128" y1="184" x2="128" y2="218" stroke="#71717a" stroke-width="2" marker-end="url(#seta-cinza)"/>
+    <line x1="128" y1="278" x2="128" y2="312" stroke="#71717a" stroke-width="2" marker-end="url(#seta-cinza)"/>
+
+    <!-- caches -->
+    <g>
+      <rect x="262" y="128" width="210" height="72" rx="12" fill="#7c3aed" fill-opacity="0.14" stroke="#8b5cf6" stroke-opacity="0.6"/>
+      <text x="280" y="156" font-size="15" font-weight="700" fill="#ede9fe">CacheVersao</text>
+      <text x="280" y="180" font-size="13" fill="#c4b5fd">patch atual, TTL de 6h</text>
+
+      <rect x="262" y="214" width="210" height="72" rx="12" fill="#7c3aed" fill-opacity="0.14" stroke="#8b5cf6" stroke-opacity="0.6"/>
+      <text x="280" y="242" font-size="15" font-weight="700" fill="#ede9fe">CacheCampeoes</text>
+      <text x="280" y="266" font-size="13" fill="#c4b5fd">invalidado quando sai patch</text>
+
+      <rect x="262" y="300" width="210" height="72" rx="12" fill="#27272a" stroke="#52525b"/>
+      <text x="280" y="328" font-size="15" font-weight="700" fill="#fafafa">httpx.AsyncClient</text>
+      <text x="280" y="352" font-size="13" fill="#a1a1aa">um só, criado no lifespan</text>
+    </g>
+    <line x1="228" y1="244" x2="258" y2="244" stroke="#71717a" stroke-width="2" marker-end="url(#seta-cinza)"/>
+
+    <!-- rodapé do card -->
+    <line x1="28" y1="402" x2="472" y2="402" stroke="#3f3f46"/>
+    <text x="28" y="434" font-size="14" fill="#a1a1aa">Pytest com Data Dragon simulado · 97% de cobertura</text>
+    <text x="28" y="458" font-size="14" fill="#a1a1aa">Decisões documentadas em ADRs</text>
+  </g>
+
+  <!-- Data Dragon -->
+  <g transform="translate(1360 360)">
+    <rect width="190" height="210" rx="18" fill="#18181b" stroke="#3f3f46"/>
+    <text x="95" y="46" text-anchor="middle" font-size="20" font-weight="700" fill="#fafafa">Data Dragon</text>
+    <text x="95" y="70" text-anchor="middle" font-size="13" fill="#a1a1aa">CDN da Riot Games</text>
+    <g font-family="DejaVu Sans Mono, monospace" font-size="12" fill="#c4b5fd">
+      <text x="20" y="108">versions.json</text>
+      <text x="20" y="132">champion.json</text>
+      <text x="20" y="156">champion/{id}.json</text>
+      <text x="20" y="180">imagens</text>
+    </g>
+  </g>
+
+  <!-- setas principais -->
+  <path d="M290 400 C 330 400, 330 245, 374 245" fill="none" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#seta)"/>
+  <text x="362" y="196" text-anchor="end" font-size="14" fill="#d8b4fe">1. carrega o app</text>
+
+  <line x1="290" y1="455" x2="784" y2="455" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#seta)"/>
+  <text x="430" y="440" font-size="14" fill="#d8b4fe">2. pede os dados (JSON · HTTPS · CORS)</text>
+
+  <line x1="1290" y1="465" x2="1354" y2="465" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#seta)"/>
+  <text x="1300" y="448" font-size="14" fill="#d8b4fe">3.</text>
+  <text x="1298" y="600" font-size="13" fill="#a1a1aa" text-anchor="start">só quando o</text>
+  <text x="1298" y="618" font-size="13" fill="#a1a1aa">cache não tem</text>
+
+  <!-- imagens direto da CDN -->
+  <path d="M175 510 L175 790 L1455 790 L1455 576" fill="none" stroke="#71717a" stroke-width="2" stroke-dasharray="8 7" marker-end="url(#seta-cinza)"/>
+  <rect x="560" y="774" width="480" height="32" rx="16" fill="#09090b"/>
+  <text x="800" y="796" text-anchor="middle" font-size="14" fill="#a1a1aa">splash arts e ícones vêm direto da CDN, sem passar pela API</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="12" fill="#52525b">Recall não é endossado pela Riot Games.</text>
+<metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTowN2YxNTAxMS01MTQ4LTQxMDAtYmU3My0yMTk4N2Q5ZmRkMmEAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaG44asJphpHx++HwJGcWblEAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDphMzU3ODk1ZC05Yzc0LTRlMWEtYmViMy1kZWFhZjVjMDliZjFscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoFOjh7L/tkbJmOxXlkx7ElgAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFgg0A/kPiv20YM4mybMMt3gq6J5+I3UpC05jNbNHmi+YLqkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaLLJm21GH1thPZ93opEwSdQAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRMAAAAAAAAAAAAAAAAZGhhc2hYIG/o04lydkU38Jb4U4wkeSk2RQDl+1gm8VRkYWNFCDw7ZG5hbWVuanVtYmYgbWFuaWZlc3RqZXhjbHVzaW9uc4GiZXN0YXJ0GSF2Zmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjA3ZjE1MDExLTUxNDgtNDEwMC1iZTczLTIxOTg3ZDlmZGQyYS9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOmJhZmYyZTM0LWM2ZDEtNDNlOC04NmMyLTJhYTNjMTFiYmMyNnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCDQD+Q+K/bRgzibJswy3eCronn4jdSkLTmM1s0eaL5guqJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggJnsGp663vLytuX1eeIYgKWVriCFwaJNg/VfDj9MBsc2iY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggJeyyU+01dWpiVBctEW2CsRwM+uF5PThbVIkER2MgWPZ0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQJ6F7OGUSCClAZojqmWB6FC61CGdBwZpNdw/Ptu7kmo1Ivyl43YJ6jVXM322f92a0uLXBK2wml3sS1J2y2ReHSA=</c2pa:manifest></metadata></svg>

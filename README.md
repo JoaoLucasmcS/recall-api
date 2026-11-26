@@ -24,6 +24,10 @@ poetry run task test       # lint + testes + cobertura
 
 Erros: `404` para campeão inexistente; `503` quando o Data Dragon não responde.
 
+## Arquitetura
+
+![Arquitetura da V1 do Recall](docs/arquitetura.png)
+
 ## Decisões de Arquitetura (ADR) — Recall API V1
 
 ### 1. Arquitetura BFF (rota → service → client)
