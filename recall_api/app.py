@@ -1,5 +1,7 @@
+from contextlib import asynccontextmanager
 from http import HTTPStatus
 
+import httpx
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -7,8 +9,16 @@ from recall_api.core.settings import get_settings
 from recall_api.routers.campeoes_router import router as campeoes_router
 from recall_api.schemas.message_schemas import Message
 
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    async with httpx.AsyncClient(timeout=10.0) as http_client:
+        app.state.http_client = http_client
+        yield
+
+
 settings = get_settings()
-app = FastAPI()
+app = FastAPI(lifespan=lifespan)
 
 app.add_middleware(CORSMiddleware, allow_origins=[settings.frontend_url], allow_methods=['GET'])
 
