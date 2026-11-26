@@ -46,9 +46,11 @@ class CampeoesService:
 
     def _montar_skins(self, campeao_id: str, skins: list[dict]) -> list[dict]:
 
+        # chromas vêm na mesma lista, marcados com 'parentSkin', e não têm splash art própria
         return [
             {**skin, 'splash_url': self._client_data_dragon.montar_url_splash(campeao_id, skin['num'])}
             for skin in skins
+            if 'parentSkin' not in skin
         ]
 
     async def buscar_campeao_detalhado(self, campeao_id: str) -> CampeaoDetalhe:
