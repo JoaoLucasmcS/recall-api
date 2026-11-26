@@ -60,3 +60,18 @@ class DataDragonClient:
         url_img = f'{self.base_url}/cdn/img/champion/loading/{campeao_id}_0.jpg'
 
         return url_img
+
+    def montar_url_splash(self, campeao_id: str, num_skin: int = 0) -> str:
+        url_splash = f'{self.base_url}/cdn/img/champion/splash/{campeao_id}_{num_skin}.jpg'
+
+        return url_splash
+
+    def montar_url_imagem_passiva(self, versao: str, arquivo: str) -> str:
+        url_img = f'{self.base_url}/cdn/{versao}/img/passive/{arquivo}'
+
+        return url_img
+
+    def montar_url_imagem_habilidade(self, versao: str, arquivo: str) -> str:
+        url_img = f'{self.base_url}/cdn/{versao}/img/spell/{arquivo}'
+
+        return url_img

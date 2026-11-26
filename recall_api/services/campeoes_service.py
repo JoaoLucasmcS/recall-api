@@ -24,6 +24,33 @@ class CampeoesService:
 
         return [CampeaoResumo.model_validate(self._adicionar_url_da_imagem(campeao)) for campeao in campeoes]
 
+    def _montar_passiva(self, passiva: dict) -> dict:
+
+        url_imagem = self._client_data_dragon.montar_url_imagem_passiva(
+            self._versao, passiva['image']['full']
+        )
+
+        return {**passiva, 'imagem_url': url_imagem}
+
+    def _montar_habilidades(self, habilidades: list[dict]) -> list[dict]:
+
+        return [
+            {
+                **habilidade,
+                'imagem_url': self._client_data_dragon.montar_url_imagem_habilidade(
+                    self._versao, habilidade['image']['full']
+                ),
+            }
+            for habilidade in habilidades
+        ]
+
+    def _montar_skins(self, campeao_id: str, skins: list[dict]) -> list[dict]:
+
+        return [
+            {**skin, 'splash_url': self._client_data_dragon.montar_url_splash(campeao_id, skin['num'])}
+            for skin in skins
+        ]
+
     async def buscar_campeao_detalhado(self, campeao_id: str) -> CampeaoDetalhe:
 
         dados = await self._client_data_dragon.get_campeao_detalhe_por_id(
@@ -32,4 +59,12 @@ class CampeoesService:
 
         campeao_detalhado = dados['data'][campeao_id]
 
-        return CampeaoDetalhe.model_validate(self._adicionar_url_da_imagem(campeao_detalhado))
+        campeao_completo = {
+            **self._adicionar_url_da_imagem(campeao_detalhado),
+            'splash_url': self._client_data_dragon.montar_url_splash(campeao_id),
+            'passive': self._montar_passiva(campeao_detalhado['passive']),
+            'spells': self._montar_habilidades(campeao_detalhado['spells']),
+            'skins': self._montar_skins(campeao_id, campeao_detalhado['skins']),
+        }
+
+        return CampeaoDetalhe.model_validate(campeao_completo)
