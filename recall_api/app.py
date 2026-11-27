@@ -16,8 +16,12 @@ from recall_api.schemas.message_schemas import Message
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    async with httpx.AsyncClient(timeout=10.0) as http_client:
+    async with (
+        httpx.AsyncClient(timeout=10.0) as http_client,
+        httpx.AsyncClient(timeout=60.0) as http_client_llm,
+    ):
         app.state.http_client = http_client
+        app.state.http_client_llm = http_client_llm
         app.state.cache_versao = CacheVersao(ttl_segundos=6 * 60 * 60)
         app.state.cache_campeoes = CacheCampeoes()
         yield
