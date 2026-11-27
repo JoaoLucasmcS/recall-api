@@ -24,6 +24,12 @@ class Settings(BaseSettings):
 
     idioma: str
 
+    llm_url_base: str
+
+    llm_modelo: str
+
+    llm_api_key: str
+
     model_config = SettingsConfigDict(
         env_file=_resolve_env_file(),
         env_file_encoding='utf-8',
