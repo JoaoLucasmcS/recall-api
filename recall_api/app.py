@@ -7,8 +7,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from recall_api.core.cache import CacheCampeoes, CacheVersao
-from recall_api.core.exceptions import DataDragonIndisponivelError
+from recall_api.core.exceptions import DataDragonIndisponivelError, LLMIndisponivelError
 from recall_api.core.settings import get_settings
+from recall_api.routers.assistente_router import router as assistente_router
 from recall_api.routers.campeoes_router import router as campeoes_router
 from recall_api.routers.patch_router import router as patch_router
 from recall_api.schemas.message_schemas import Message
@@ -30,10 +31,11 @@ async def lifespan(app: FastAPI):
 settings = get_settings()
 app = FastAPI(lifespan=lifespan)
 
-app.add_middleware(CORSMiddleware, allow_origins=[settings.frontend_url], allow_methods=['GET'])
+app.add_middleware(CORSMiddleware, allow_origins=[settings.frontend_url], allow_methods=['GET', 'POST'])
 
 app.include_router(campeoes_router)
 app.include_router(patch_router)
+app.include_router(assistente_router)
 
 
 @app.exception_handler(DataDragonIndisponivelError)
@@ -41,6 +43,14 @@ async def data_dragon_indisponivel(request: Request, erro: DataDragonIndisponive
     return JSONResponse(
         status_code=HTTPStatus.SERVICE_UNAVAILABLE,
         content={'detail': 'Data Dragon indisponível no momento'},
+    )
+
+
+@app.exception_handler(LLMIndisponivelError)
+async def llm_indisponivel(request: Request, erro: LLMIndisponivelError):
+    return JSONResponse(
+        status_code=HTTPStatus.SERVICE_UNAVAILABLE,
+        content={'detail': 'LLM indisponível no momento'},
     )
 
 
